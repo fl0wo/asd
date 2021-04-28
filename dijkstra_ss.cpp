@@ -38,6 +38,7 @@ void init_ss(){
 void relax(ll da,ll verso,ll peso){
     if (dist[verso] > peso){
         dist[verso] = peso;
+        //  parent[verso] = da;
         if(!visited[verso]) q.push_front(verso);
         else q.push_back(verso);
         visited[verso]=1;
