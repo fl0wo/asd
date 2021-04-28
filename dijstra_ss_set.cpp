@@ -46,6 +46,12 @@ int main(){
 		auto it=coda.begin();
 		x = (*it).second;
 		coda.erase(it);
+		
+		// single source single destination ???
+		if(x==f){
+		    cout << d[f];
+		    return 0;
+		}
 
 		for(i=0;i<grafo[x].size();i++){
 			y = grafo[x][i].second;
@@ -57,7 +63,7 @@ int main(){
 
     cout << d[f];
 
-	return 0;
+     return 0;
 }
 
 void input(){
