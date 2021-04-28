@@ -3,6 +3,13 @@ using namespace std;
 typedef long long ll;
 #define MAXN 10000
 
+/*
+Example in.txt
+2 1
+1 2
+1 2 1
+*/
+
 typedef pair<int,ll> pil;
 vector<vector<pair<int,ll>>> graph(MAXN);
 vector<ll> dist(MAXN,1e16);
