@@ -66,9 +66,10 @@ int main(){
 
         // Estraggo il nodo minimo (inizialmente root)
         // O(log M)
-        int u = extractMin(Q);
+        int u=extractMin(Q);
 
-        visited[u] = 1;
+        // Una volta estratto non dovrò più
+        visited[u]=1;
 
         FOREACH(adj,g[u]){
 
