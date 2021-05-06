@@ -16,7 +16,7 @@ typedef vector<vi> vvi;
 
 struct disj{
     int cap;
-    int t[MAXN]; // tree parental
+    int p[MAXN]; // tree parental
     int r[MAXN]; // rank
 
     disj(int cap){
@@ -24,31 +24,29 @@ struct disj{
     }
 
     void MAKESET(int x){
-        t[x]=x;
+        p[x]=x;
         r[x]=1;
     }
 
     int FINDSET(int x){
-        if(t[x]==x)return x;
-        int p = FINDSET(t[x]);
+        if(p[x]==x)return x;
+        int par = FINDSET(p[x]);
         // path compression
-        t[x]=p;
-        return p;
+        p[x]=par;
+        return par;
     }
 
     void UNION(int x,int y){
-        int p1 = FINDSET(x);
-        int p2 = FINDSET(y);
+        x = FINDSET(x);
+        y = FINDSET(y);
 
-        if(r[p1]<r[p2]){
-            t[p1]=p2; // ascendor union
-            r[p2]+=r[p1];
-        }else{
-            cout << " dioboia " << t[p2] << " : " << t[p1] << endl;
-            t[p2]=p1; // ascendor union
-            r[p1]+=r[p2];
-            cout << " dioboia " << t[p2] << " : " << t[p1] << endl;
-        }
+        if(r[x]>r[y])
+			p[y]=x;
+		else
+			p[x]=y;
+
+		if(r[x]==r[y])
+			r[y]++;
     }
 
     void printGroups(){
